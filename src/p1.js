@@ -19,6 +19,7 @@ const p1 = () => {
       const currLoop = arr[i];
       const innerLoop = arr[j];
 
+      // Moves the current value (which is bigger) to the back of the array.
       if (currLoop > innerLoop) {
         arr[i] = innerLoop;
         arr[j] = currLoop;
@@ -38,3 +39,21 @@ const p1 = () => {
  */
 
 module.exports = p1;
+
+/**
+ * .sort compares strings in UTF-16 code units order so it returns some funky results.
+ * To compare based on numbers, use a - b.
+ * > 0 returns [b, a]
+ * < 0 returns [a, b]
+ * == 0 do nothing
+ *
+ * * Uses bubble sorting. Sorts through the array by comparing with the neighbour,
+ * reiterate until all values sorted.
+ */
+const p1_2 = () => {
+  const arr = [21, 400, 8, -3, 77, 99, -16, 55, 111, -36, 28];
+
+  return arr.sort((a, b) => a - b);
+};
+
+console.log(p1_2());

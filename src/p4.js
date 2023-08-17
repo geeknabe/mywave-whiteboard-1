@@ -36,3 +36,26 @@ module.exports = p4;
  * Given that the first loop runs for n times, the inner loop will run n times for every n times
  * the first loop runs. This is similar to p1.js
  */
+
+/**
+ * Alternative solution
+ */
+const p4_1 = (firstArr, secondArr) =>
+  firstArr.filter((element) => secondArr.includes(element));
+
+/**
+ * Alternative solution
+ */
+const p4_2 = (firstArr, secondArr) => {
+  var arr = [];
+
+  for (var i = 0; i < firstArr.length; i++) {
+    if (secondArr.indexOf(firstArr[i]) > -1) {
+      arr.push(firstArr[i]);
+    }
+  }
+
+  return arr;
+};
+
+console.log(p4_2([4, 5, 2, 3, 1, 6], [8, 7, 6, 9, 4, 5]));

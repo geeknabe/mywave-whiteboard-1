@@ -81,3 +81,10 @@ module.exports = p5;
  *
  * This script has 3 independent loops, thus O(3n^2)
  */
+
+const p5_1 = (firstArr, secondArr) => [
+  ...firstArr.filter((x) => !secondArr.includes(x)),
+  ...secondArr.filter((x) => !firstArr.includes(x)),
+];
+
+console.log(p5_1([1, 2, 3], [2, 3, 5]));

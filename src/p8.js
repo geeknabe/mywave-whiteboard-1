@@ -100,9 +100,7 @@ const p8 = (txt1, txt2) => {
   });
 
   return (
-    compareCharacters.length > 0 &&
-    compareCharacters.length === arr1.length &&
-    compareCharacters.length === arr2.length
+    compareCharacters.length > 0 && compareCharacters.length === arr2.length
   );
 };
 

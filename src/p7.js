@@ -21,6 +21,7 @@ const p7 = (num) => {
   for (var i = 0; i < num; i++) {
     const result = i * i;
 
+    console.log('p7', i);
     if (result === num) {
       found = i;
       break;
@@ -40,3 +41,34 @@ module.exports = p7;
  * into account, this script's big o notation is O(n).
  *
  */
+
+// O(log(n)) - Binary search
+// Split to 2. If the multiplied middle number of the split is bigger than the current number I want,
+// then I know I gotta check smaller numbers. Because the resulting multiplication means the square root has to be smaller.
+// The moment the number can't go any lower, I know the previous number (upperBound)
+// should be the square root I am looking for.
+const p7_1 = (num) => {
+  let lowerBound = 0;
+  let upperBound = num;
+
+  while (lowerBound <= upperBound) {
+    let mid = (lowerBound + upperBound) / 2;
+
+    // round down
+    mid = mid - (mid % 1);
+
+    console.log('LOW: ', lowerBound, ' HIGH: ', upperBound, ' MID: ', mid);
+
+    if (mid * mid > num) {
+      console.log('Add to high');
+      upperBound = mid - 1;
+    } else {
+      console.log('Add to low');
+      lowerBound = mid + 1;
+    }
+  }
+
+  return upperBound;
+};
+
+console.log(p7_1(36));

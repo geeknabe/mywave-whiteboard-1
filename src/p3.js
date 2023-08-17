@@ -11,6 +11,16 @@
  * when generating a large sequence?
  */
 
+/**
+ * Extra Notes:
+ * Recursion creates a stack call whereby the next function calls will be added to the top
+ * of the stack. The top of the stack will get resolved first, and the resulting value
+ * passed to the next stack, and the next, and the next until we reach the last stack
+ * which resolves to our desired value.
+ *
+ * This is recursion, where it keeps adding to the stack call.
+ */
+
 const p3 = (totalSequence) => {
   const arr = [];
 
@@ -58,6 +68,26 @@ const p3Bonus = (totalSequence) => {
 
   return arr;
 };
+
+// Alternative fibonacci
+// Every loop, pop in the current n1 and n2. Then replaces n1 and n2 with the next set.
+const p3_1 = (totalSequence) => {
+  let n1 = 0;
+  let n2 = 1;
+  let nextTerm;
+  let arr = [];
+
+  for (let i = 1; i <= totalSequence; i++) {
+    arr.push(n1);
+    nextTerm = n1 + n2;
+    n1 = n2;
+    n2 = nextTerm;
+  }
+
+  return arr;
+};
+
+console.log(p3_1(5));
 
 module.exports = {
   p3,
